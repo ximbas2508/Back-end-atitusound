@@ -2,29 +2,41 @@ package br.edu.atitus.poo.atitusound.entity;
 
 import java.util.List;
 
+import org.antlr.v4.runtime.misc.NotNull;
+import org.hibernate.annotations.ManyToAny;
+
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
 @Table(name= "tb_playlist")
 public class PlaylistEntity extends GenericEntity {
 
-	private boolean public_share;
+	@Column(name = "public_share")
+	private boolean publicShare;
 	
-	@ManyToMany(fetch=FetchType.EAGER)
-	@JoinTable(name="tb_playlist_music")
+	@ManyToAny(fetch = FetchType.EAGER)
+	@JoinTable(name = "tb_playlist_music", 
+	joinColumns = @JoinColumn(name = "playlist_uuid"),
+	inverseJoinColumns = @JoinColumn(name ="music_uuid") )
 	
 	private List<MusicEntity> musics;
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "user_uuid", nullable = false)
+	private UserEntity user;
 
 	public boolean isPublic_share() {
-		return public_share;
+		return publicShare;
 	}
 
-	public void setPublic_share(boolean public_share) {
-		this.public_share = public_share;
+	public void setPublic_share(boolean publicShare) {
+		this.publicShare = publicShare;
 	}
 
 	public List<MusicEntity> getMusics() {
@@ -34,6 +46,16 @@ public class PlaylistEntity extends GenericEntity {
 	public void setMusics(List<MusicEntity> musics) {
 		this.musics = musics;
 	}
+
+	public UserEntity getUser() {
+		return user;
+	}
+
+	public void setUser(UserEntity user) {
+		this.user = user;
+	}
+	
+	
 	
 	
 	
