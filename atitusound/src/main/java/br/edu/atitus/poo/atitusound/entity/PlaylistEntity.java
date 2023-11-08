@@ -10,6 +10,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -20,7 +21,7 @@ public class PlaylistEntity extends GenericEntity {
 	@Column(name = "public_share")
 	private boolean publicShare;
 	
-	@ManyToAny(fetch = FetchType.EAGER)
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(name = "tb_playlist_music", 
 	joinColumns = @JoinColumn(name = "playlist_uuid"),
 	inverseJoinColumns = @JoinColumn(name ="music_uuid") )
