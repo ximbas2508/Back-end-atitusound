@@ -49,7 +49,7 @@ public class AuthController {
 	@PostMapping("/signin")
 	public ResponseEntity<String> PostSignin(@RequestBody SigninDTO signin){
 		try {
-			authconfig.getAuthenticationManager().authenticate(	
+			var auth = authconfig.getAuthenticationManager().authenticate(	
 				new UsernamePasswordAuthenticationToken(signin.getUsername(), signin.getPassword()));
 		} catch (AuthenticationException e) {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(e.getMessage());
