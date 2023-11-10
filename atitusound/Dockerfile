@@ -1,4 +1,4 @@
-FROM openjdk:17-jdk-slin
+FROM openjdk:17-jdk-slim
 ARG JAR_FILE-app/*
 COPY $(JAR_FILE) app.jar
 EXPOSE 8080 '
