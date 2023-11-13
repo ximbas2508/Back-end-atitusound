@@ -18,8 +18,8 @@ public class ConfigSwagger {
 						.description("Documentaçao do back end")
 						.version("1.0.0")
 						.contact(new Contact()
-								.name("Desenvolverdor: Gabriel")
-								.email("gabrielhenriquegemelli@gmail.com")));
+								.name("Desenvolverdor: Eduardo")
+								.email("eduardo.morel.pessoal@gmail.com")));
 					
 	}
 }

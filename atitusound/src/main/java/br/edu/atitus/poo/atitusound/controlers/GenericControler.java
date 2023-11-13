@@ -20,7 +20,18 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import br.edu.atitus.poo.atitusound.entity.GenericEntity;
 import br.edu.atitus.poo.atitusound.services.GenericService;
+import io.swagger.v3.oas.annotations.headers.Header;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 
+
+/*@ApiResponse ( value = {
+		@ApiResponse(responseCode = "400", description = "ERRO DE VALIDAÇÃO OU REQUISIÇÃO INVÁLIDA",
+				content = @Content, headers = @Header(name = "error", description = "Descrição do Erro", schema = @Schema(implementation = String.class))),
+		@ApiResponse(responseCode = "401", description = "UNAUTHORIZED", content = @Content),
+		@ApiResponse(responseCode = "403", description = "FORBIDDEN", content =@Content)
+})*/
 public abstract class GenericControler<TEntidade extends GenericEntity, TDTO> {
 	
 	protected abstract GenericService<TEntidade> getService();
